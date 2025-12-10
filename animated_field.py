@@ -13,7 +13,7 @@ from config import (
 
 
 def animate_history(history):
-    fig, ax = plt.subplots(figsize=(10, 10))
+    fig, ax = plt.subplots(figsize=(10, 10), tight_layout=True)
     cmap = ListedColormap(["black", "white"])
 
     if USE_NUMPY:
