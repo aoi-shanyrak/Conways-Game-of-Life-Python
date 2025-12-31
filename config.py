@@ -1,18 +1,9 @@
 
-DENSITY_MODES = {
-    "very_sparse": 0.02,   
-    "sparse": 0.05,         
-    "optimal": 0.1,         
-    "dense": 0.15,          
-    "chaos": 0.25,          
-    "random": None,         
-}
-
 USE_NUMPY = True
+USE_NUMPY_UNEFFECTIVE = False
 
-DENSITY_MODE = "chaos"
-DENSITY_VALUE = None
-FIELD_SIZE = 64
+DENSITY_VALUE = 0.25
+FIELD_SIZE = 256
 STEPS = 64
 
 ANIMATION = True

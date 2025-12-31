@@ -2,7 +2,14 @@ import numpy as np
 import time
 
 import field_generator
-from config import USE_NUMPY, STEPS, FIELD_SIZE, VERBOSE, ANIMATION
+from config import (
+    USE_NUMPY,
+    USE_NUMPY_UNEFFECTIVE, 
+    STEPS, 
+    FIELD_SIZE, 
+    VERBOSE, 
+    ANIMATION
+    )
 import conway_stdPyArr
 import conway_numpy
 import animated_field
@@ -29,7 +36,10 @@ def load_field(filename: str):
 
 def simulate_life(field):
     if USE_NUMPY:
-        sim_func = conway_numpy.lifetime_step_numpy
+        if USE_NUMPY_UNEFFECTIVE:
+            sim_func = conway_numpy.lifetime_step_numpy_uneffective 
+        else:
+            sim_func = conway_numpy.lifetime_step_numpy
     else:
         sim_func = conway_stdPyArr.lifetime_step_stdPyArr
 
@@ -60,12 +70,17 @@ def main():
     if VERBOSE:
         from config import FIELD_SIZE, STEPS
 
-        print("=" * 60)
+        print("=" * 30)
         print("THE CONWAY'S GAME OF LIFE")
-        print("=" * 60)
+        print("=" * 30)
         print(f"field size: {FIELD_SIZE}x{FIELD_SIZE}")
         print(f"steps: {STEPS}")
-        print(f"using {"numPy" if USE_NUMPY else "lists"}")
+        print("using ", end="")
+        if USE_NUMPY:
+            print(f"{"uneffective numpy" if USE_NUMPY_UNEFFECTIVE
+                     else "numpy"}")
+        else:
+            print("lists")
     
     field_file = field_generator.get_field()
     if VERBOSE:

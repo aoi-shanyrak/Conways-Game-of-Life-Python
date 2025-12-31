@@ -6,9 +6,7 @@ from config import (
     TEST_DIR,
     FIELD_NUMBER,
     FIELD_SIZE,
-    DENSITY_MODE,
-    DENSITY_VALUE,
-    DENSITY_MODES
+    DENSITY_VALUE
 )
 
 
@@ -23,15 +21,13 @@ def get_field() -> str:
 def create_field() -> str:
     os.makedirs(TEST_DIR, exist_ok=True)
 
-    if DENSITY_VALUE is not None:
-        density = max(0.0, min(1.0, DENSITY_VALUE))
-        mode_name = f"custom_{density:.3f}"
-    elif DENSITY_MODE == "random":
-        density = random.uniform(0.02, 0.25)
-        mode_name = f"random_{density:.3f}"
+    if DENSITY_VALUE is None:
+        den_value = 0.15
     else:
-        density = DENSITY_MODES.get(DENSITY_MODE, DENSITY_MODES["optimal"])
-        mode_name = DENSITY_MODE
+        den_value = DENSITY_VALUE
+
+    density = max(0.0, min(1.0, den_value))
+    mode_name = f"{density:.3f}"
     
     existing_files = []
     if os.path.exists(TEST_DIR):
@@ -61,9 +57,8 @@ def create_field() -> str:
     
     if VERBOSE:
         print(f"created file: {filename}")
-        print(f"  mode: {mode_name}")
         print(f"  density: {actual_density*100:.2f}%")
-        print(f"  cells: {total_cells:,} ({ones:,} alive, {zeros:,} dead)")
+        print(f"  cells: {FIELD_SIZE**2}")
     
     return filename
 
