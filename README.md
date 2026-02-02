@@ -39,21 +39,21 @@ python main.py
 ```python
 # Основные параметры
 FIELD_SIZE = 256      # Размер поля (256x256 клеток)
-STEPS = 64           # Количество шагов симуляции
-DENSITY_VALUE = 0.25 # Плотность начального заполнения (25%)
+STEPS = 64            # Количество шагов симуляции
+DENSITY_VALUE = 0.25  # Плотность начального заполнения (25%)
 
 # Выбор реализации
-USE_NUMPY = True    # True - использовать NumPy, False - стандартные списки
+USE_NUMPY = True               # True - использовать NumPy, False - стандартные списки
 USE_NUMPY_UNEFFECTIVE = False  # True - неэффективная реализация NumPy (для сравнения)
 
 # Анимация
-ANIMATION = True     # Показывать анимацию
-INTERVAL_FOR_ANI = 50  # Интервал между кадрами (мс)
-SAVE_GIF_ANI = False  # Сохранять анимацию в GIF
+ANIMATION = True            # Показывать анимацию
+INTERVAL_FOR_ANI = 50       # Интервал между кадрами (мс)
+SAVE_GIF_ANI = False        # Сохранять анимацию в GIF
 SAVE_GIF_ANI_PATH = "gifs"  # Папка для сохранения GIF
 
 # Отладка
-VERBOSE = True       # Вывод дополнительной информации
+VERBOSE = True  # Вывод дополнительной информации
 ```
 
 ## Структура проекта
